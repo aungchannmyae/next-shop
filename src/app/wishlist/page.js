@@ -1,10 +1,12 @@
 import WishlistSection from "@/features/wishlist/components/WishlistSection";
-import React from "react";
+import React, { Suspense } from "react";
 
 const page = () => {
   return (
     <>
-      <WishlistSection />
+      <Suspense fallback={<p>Loading...</p>}>
+        <WishlistSection />
+      </Suspense>
     </>
   );
 };
