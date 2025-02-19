@@ -1,11 +1,13 @@
 import CheckoutSection from "@/features/orderCheckout/components/CheckoutSection";
-import React from "react";
+import React, { Suspense } from "react";
 
 const page = () => {
   return (
-    <div>
-      <CheckoutSection />
-    </div>
+    <>
+      <Suspense fallback={<p>Loading...</p>}>
+        <CheckoutSection />
+      </Suspense>
+    </>
   );
 };
 
