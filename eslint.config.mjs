@@ -9,13 +9,10 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
 
+// Convert the array output to a correct format
 export default [
+  ...compat.extends("next/core-web-vitals"), // Spread the array correctly
   {
-    parser: "@babel/eslint-parser", // 👈 Explicitly setting the parser
-    ...compat.extends("next/core-web-vitals"),
+    parser: "@babel/eslint-parser", // Explicitly setting the parser
   },
 ];
-
-// const eslintConfig = [...compat.extends("next/core-web-vitals")];
-
-// export default eslintConfig;
