@@ -1,12 +1,12 @@
 import ProductDetail from "@/features/productDetail/components/ProductDetail";
-import React from "react";
+import React, { Suspense } from "react";
 
 const Page = async ({ params }) => {
   const productId = params.id;
 
   const res = await fetch(
     `https://api.escuelajs.co/api/v1/products/${productId}`,
-    { cache: 'no-store' }
+    { cache: "no-store" }
   );
 
   if (!res.ok) {
@@ -15,7 +15,13 @@ const Page = async ({ params }) => {
 
   const product = await res.json();
 
-  return <ProductDetail product={product} />;
+  return (
+    <>
+      <Suspense fallback={<p>Loading...</p>}>
+        <ProductDetail product={product} />;
+      </Suspense>
+    </>
+  );
 };
 
 export default Page;

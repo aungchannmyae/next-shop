@@ -1,18 +1,13 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
+import js from "@eslint/js";
+import * as next from "@next/eslint-plugin-next"; // Ensure it imports correctly
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
-
-// Convert the array output to a correct format
 export default [
-  ...compat.extends("next/core-web-vitals"), // Spread the array correctly
+  js.configs.recommended,
+  next.configs.recommended, // Ensure ESLint loads the Next.js config
   {
-    parser: "@babel/eslint-parser", // Explicitly setting the parser
+    rules: {
+      "react/jsx-uses-react": "off",
+      "react/react-in-jsx-scope": "off",
+    },
   },
 ];

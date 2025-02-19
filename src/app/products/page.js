@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { Suspense } from "react";
 
 const page = () => {
   return (
-    <div>page</div>
-  )
-}
+    <>
+      <Suspense fallback={<p>Loading...</p>}>page</Suspense>
+    </>
+  );
+};
 
-export default page
+export default page;
